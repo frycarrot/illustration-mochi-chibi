@@ -1,0 +1,132 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 480 360" role="img" aria-label="Template, mochi chibi style">
+<title>Template, mochi chibi style</title>
+<!-- Copy this file, change the prefix "xx-" everywhere, recolour the three fur stops, swap the ear/eye/mouth blocks. -->
+<defs>
+  <!-- fur ramp: light / base / shade. Same ids are reused by every part of one character. -->
+  <radialGradient id="xx-fur" cx="0.42" cy="0.32" r="0.78">
+    <stop offset="0" stop-color="#F7EAE2"/><stop offset="0.5" stop-color="#EAD7D2"/><stop offset="1" stop-color="#C8AEAE"/>
+  </radialGradient>
+  <!-- bottom occlusion over the head, and a soft top-left gloss -->
+  <linearGradient id="xx-ao" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0.5" stop-color="#4A3C38" stop-opacity="0"/><stop offset="1" stop-color="#4A3C38" stop-opacity="0.26"/>
+  </linearGradient>
+  <linearGradient id="xx-gloss" x1="0" y1="0" x2="0" y2="1">
+    <stop offset="0" stop-color="#FFFFFF" stop-opacity="0.55"/><stop offset="1" stop-color="#FFFFFF" stop-opacity="0"/>
+  </linearGradient>
+  <filter id="xx-soft" x="-40%" y="-40%" width="180%" height="180%"><feGaussianBlur stdDeviation="2.4"/></filter>
+  <filter id="xx-blur1" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="1.2"/></filter>
+  <filter id="xx-blur4" x="-50%" y="-50%" width="200%" height="200%"><feGaussianBlur stdDeviation="4"/></filter>
+  <linearGradient id="xx-wristFade" gradientUnits="userSpaceOnUse" x1="16" x2="29" y1="0" y2="0"><stop stop-color="white"/><stop offset="1" stop-color="white" stop-opacity="0"/></linearGradient>
+  <mask id="xx-wrist" maskUnits="userSpaceOnUse" x="3" y="-49" width="30" height="26"><rect x="3" y="-49" width="30" height="26" fill="url(#xx-wristFade)"/></mask>
+  <!-- clip paths in the CHARACTER FRAME (userSpaceOnUse follows the character's transform) -->
+  <clipPath id="xx-bodyClip" clipPathUnits="userSpaceOnUse">
+    <path d="M-22 -62 C-31 -60 -34 -44 -34 -30 C-34 -14 -27 -5 -14 -5 L14 -5 C27 -5 34 -14 34 -30 C34 -44 31 -60 22 -62 Z"/>
+  </clipPath>
+  <clipPath id="xx-headClip" clipPathUnits="userSpaceOnUse">
+    <path d="M0 -127 C20 -127 37 -118 45 -102 C49 -94 51 -87 50 -79 C49 -63 32 -54 0 -54 C-32 -54 -49 -63 -50 -79 C-51 -87 -49 -94 -45 -102 C-37 -118 -20 -127 0 -127 Z"/>
+  </clipPath>
+<filter id="xx-canvas" x="0" y="0" width="100%" height="100%" color-interpolation-filters="sRGB">
+  <feTurbulence type="fractalNoise" baseFrequency=".56" numOctaves="2" seed="17"/>
+  <feColorMatrix type="matrix" values="2.6 0 0 0 -.8  2.6 0 0 0 -.8  2.6 0 0 0 -.8  0 0 0 0 1"/>
+</filter>
+  <linearGradient id="xx-water" x2=".3" y2="1"><stop stop-color="#DCEBE2"/><stop offset="1" stop-color="#BBCEC4"/></linearGradient>
+  <linearGradient id="xx-plank" x2="0" y2="1"><stop stop-color="#DDC8B1"/><stop offset="1" stop-color="#C8A98C"/></linearGradient>
+  <linearGradient id="xx-leaf" x2="1" y2=".4"><stop stop-color="#CCD6B8"/><stop offset="1" stop-color="#8DAD99"/></linearGradient>
+</defs>
+
+<!-- 1. background: full bleed, no rx -->
+<rect width="480" height="360" fill="#EFEBE7"/>
+
+<!-- 2. floor: a blurred ellipse one step darker than the background, never a hard line -->
+<ellipse cx="227" cy="318" rx="158" ry="14" fill="#DDD6D0" opacity="0.7" filter="url(#xx-blur4)"/>
+
+<!-- 3. decor in the margins (sparkle, dots, heart) -->
+<path transform="translate(70 80)" d="M0 -7 Q1.5 -1.5 7 0 Q1.5 1.5 0 7 Q-1.5 1.5 -7 0 Q-1.5 -1.5 0 -7 Z" fill="#FFFFFF"/>
+<path transform="translate(410 96) rotate(12)" d="M0 -5 Q1.1 -1.1 5 0 Q1.1 1.1 0 5 Q-1.1 1.1 -5 0 Q-1.1 -1.1 0 -5 Z" fill="#E6D3C6"/>
+<circle cx="104" cy="140" r="2" fill="#FFFFFF"/><circle cx="388" cy="168" r="1.6" fill="#E6D3C6"/><circle cx="420" cy="60" r="2.4" fill="#FFFFFF"/>
+<path transform="translate(380 230)" d="M0 3 C-6 -1 -6 -6 -3 -6 C-1.5 -6 -0.5 -5 0 -4 C0.5 -5 1.5 -6 3 -6 C6 -6 6 -1 0 3 Z" fill="#E6C7C3"/>
+
+<!-- Small waterside landing. Change the footing and place cues together for a different setting. -->
+<path d="M55 289 C69 268 131 264 186 266 C250 261 343 251 388 267 C423 282 407 303 371 311 C357 331 302 337 249 333 C190 341 110 327 101 317 C65 316 43 305 55 289Z" fill="url(#xx-water)"/>
+<g fill="none" stroke="#EDF4E9" stroke-width="2" stroke-linecap="round">
+  <path d="M67 296q12 2 23 0m68 21q20 3 36 0m121 -6q15 3 26 -1m11 -31q13 2 24 -1"/>
+</g>
+<!-- Reed stems sit behind the landing; the leaves pick up the water colour. -->
+<g fill="url(#xx-leaf)">
+  <path d="M322 278 Q310 239 283 223 Q304 226 324 261 Q318 222 324 197 Q329 221 327 255 Q342 222 358 215 Q342 238 329 277Z"/>
+  <path d="M350 278 Q355 248 378 233 Q364 255 354 279Z"/>
+</g>
+<g fill="none" stroke-linecap="round">
+  <path d="M327 276 Q339 223 337 177 M345 278 Q349 249 368 212" stroke="#97AA8B" stroke-width="2.4"/>
+  <path d="M337 184l-.8 -15m32.2 44 4.8 -10" stroke="#B39880" stroke-width="6"/>
+</g>
+<ellipse cx="244" cy="291" rx="88" ry="9" fill="#708779" opacity=".19" filter="url(#xx-soft)"/>
+<g fill="#AD917E">
+  <path d="M152 269l10 1 -1 26q-5 3 -9 -1Z"/><path d="M294 270l10 -2 -1 25q-4 3 -9 0Z"/>
+</g>
+<path d="M124 265 L172 242 L339 244 L310 275 L124 272Z" fill="url(#xx-plank)"/>
+<path d="M124 265 L310 268 L339 244 L339 251 L310 277 L124 273Z" fill="#B49781"/>
+<path d="M144 255l177 3m-160 -11 170 2" stroke="#B89C84" stroke-width="1.3" opacity=".72"/>
+<!-- A folded boat and its reflection mark the water surface. -->
+<ellipse cx="107" cy="288" rx="22" ry="3.4" fill="#8FA79B" opacity=".35"/>
+<path d="M85 278l17 3 9 -17 2 14 17 -6 -12 15 -24 -1Z" fill="#FBF2DC"/>
+<path d="M102 281l9 -17 2 14Z" fill="#D7CBB6"/><path d="M85 278l23 6 22 -12 -12 15 -24 -1Z" fill="#E6C7AC"/>
+
+<!-- 4. THE CHARACTER. Frame: head width 100, x 0 = centre line, y 0 = ground, up is negative. -->
+<g transform="translate(225 264) scale(1.4)">
+  <!-- contact shadow -->
+  <ellipse cx="0" cy="0" rx="40" ry="5" fill="#5E524E" opacity="0.22" filter="url(#xx-soft)"/>
+  <g transform="scale(.74)">
+  <!-- tail (behind the body): cat tube -->
+  <path d="M26 -16 C44 -16 50 -32 44 -46" fill="none" stroke="url(#xx-fur)" stroke-width="7" stroke-linecap="round"/>
+  <!-- outward paws: body covers both roots -->
+  <g transform="scale(-1 1)"><path d="M22 -45 C30 -47 41 -46 46 -42 Q51 -37 47 -31 C44 -27 34 -27 23 -29 Z" fill="url(#xx-fur)"/></g>
+  <path d="M22 -45 C30 -47 41 -46 46 -42 Q51 -37 47 -31 C44 -27 34 -27 23 -29 Z" fill="url(#xx-fur)"/>
+  <!-- body (pear), chin shadow clipped to it, feet -->
+  <path d="M-22 -62 C-31 -60 -34 -44 -34 -30 C-34 -14 -27 -5 -14 -5 L14 -5 C27 -5 34 -14 34 -30 C34 -44 31 -60 22 -62 Z" fill="url(#xx-fur)"/>
+  <ellipse cx="0" cy="-55" rx="42" ry="9" fill="#4A3C38" opacity="0.32" filter="url(#xx-soft)" clip-path="url(#xx-bodyClip)"/>
+  <path transform="translate(-14 -6)" d="M-10 1 C-10 -3.5 -6 -7 0 -7 C5.8 -7 10 -3.4 10 .8 C10 4 5.4 6 0 6 C-5.3 6 -10 4.4 -10 1 Z" fill="url(#xx-fur)"/>
+  <path transform="translate(14 -6)" d="M-10 1 C-10 -3.5 -6 -7 0 -7 C5.8 -7 10 -3.4 10 .8 C10 4 5.4 6 0 6 C-5.3 6 -10 4.4 -10 1 Z" fill="url(#xx-fur)"/>
+  </g>
+  <g transform="translate(0 14)">
+  <!-- head group: tilt it with rotate(deg 0 -56) -->
+  <g transform="rotate(4 0 -56)">
+    <!-- back ears: "point" (right ear, then the same under scale(-1 1)) with inner ear -->
+    <path d="M4 -124 C18 -138 32 -152 40 -156 C45 -158 48 -155 48 -150 C50 -132 51 -106 47 -88 L32 -99 Z" fill="url(#xx-fur)"/>
+    <path d="M16 -124 C26 -134 34 -144 39 -147 C41 -148 43 -146 43 -143 C44 -134 44 -124 42 -114 Z" fill="#B9A0A2"/>
+    <g transform="scale(-1 1)">
+      <path d="M4 -124 C18 -138 32 -152 40 -156 C45 -158 48 -155 48 -150 C50 -132 51 -106 47 -88 L32 -99 Z" fill="url(#xx-fur)"/>
+      <path d="M16 -124 C26 -134 34 -144 39 -147 C41 -148 43 -146 43 -143 C44 -134 44 -124 42 -114 Z" fill="#B9A0A2"/>
+    </g>
+    <!-- head: domed bun, widest at the cheeks -->
+    <path d="M0 -127 C20 -127 37 -118 45 -102 C49 -94 51 -87 50 -79 C49 -63 32 -54 0 -54 C-32 -54 -49 -63 -50 -79 C-51 -87 -49 -94 -45 -102 C-37 -118 -20 -127 0 -127 Z" fill="url(#xx-fur)"/>
+    <!-- markings clipped to the head (muzzle patch here), then the bottom occlusion -->
+    <g clip-path="url(#xx-headClip)">
+      <ellipse cx="0" cy="-67.8" rx="15" ry="9.5" fill="#F1ECE8"/>
+      <path d="M0 -127 C20 -127 37 -118 45 -102 C49 -94 51 -87 50 -79 C49 -63 32 -54 0 -54 C-32 -54 -49 -63 -50 -79 C-51 -87 -49 -94 -45 -102 C-37 -118 -20 -127 0 -127 Z" fill="url(#xx-ao)"/>
+    </g>
+    <ellipse cx="-18" cy="-114" rx="16" ry="5" fill="url(#xx-gloss)" opacity="0.5" filter="url(#xx-blur1)"/>
+    <!-- blush -->
+    <ellipse cx="-38" cy="-70" rx="7" ry="4" fill="#EE9FA2" opacity="0.55" filter="url(#xx-blur1)"/>
+    <ellipse cx="38" cy="-70" rx="7" ry="4" fill="#EE9FA2" opacity="0.55" filter="url(#xx-blur1)"/>
+    <!-- double: use the same reflection orientation on both eyes -->
+    <g transform="translate(-30 -84)">
+  <ellipse rx="11" ry="12" fill="#2B2325"/>
+  <path d="M-7.5 -1.4 C-6.7 -4 -4.3 -8.4 -2.7 -8.7 C-1.2 -9 2.8 -5.9 3 -4.2 C3.2 -2.5 .4 .8 -1.9 2.1 C-4 3.3 -7 3.5 -7.8 2 C-8.4 1 -8.1 -.2 -7.5 -1.4 Z" fill="white"/>
+  <path d="M1.3 3.5 Q3.3 1.1 4.6 -.2 Q5.3 -.8 7.2 .4 Q8.6 1.3 8 3.2 C7.3 6.7 5.4 8.4 2.1 8.2 Q.3 8.1 .2 6.1 Q.1 4.9 1.3 3.5 Z" fill="white"/>
+</g>
+    <g transform="translate(30 -84)">
+  <ellipse rx="11" ry="12" fill="#2B2325"/>
+  <path d="M-7.5 -1.4 C-6.7 -4 -4.3 -8.4 -2.7 -8.7 C-1.2 -9 2.8 -5.9 3 -4.2 C3.2 -2.5 .4 .8 -1.9 2.1 C-4 3.3 -7 3.5 -7.8 2 C-8.4 1 -8.1 -.2 -7.5 -1.4 Z" fill="white"/>
+  <path d="M1.3 3.5 Q3.3 1.1 4.6 -.2 Q5.3 -.8 7.2 .4 Q8.6 1.3 8 3.2 C7.3 6.7 5.4 8.4 2.1 8.2 Q.3 8.1 .2 6.1 Q.1 4.9 1.3 3.5 Z" fill="white"/>
+</g>
+    <!-- nose (tiny, sits on the mouth) and mouth "w" -->
+    <ellipse cx="0" cy="-70.8" rx="2.3" ry="1.5" fill="#C98E92"/>
+    <path d="M-4.6 -69 Q-2.3 -66.4 0 -69 Q2.3 -66.4 4.6 -69" fill="none" stroke="#3A2C2E" stroke-width="1.5" stroke-linecap="round" stroke-linejoin="round"/>
+    <!-- front ears (floppy, lop, horns) go here; then headwear -->
+  </g>
+  </g>
+  <!-- Inside scale(.74): held item at (0 -36), then "hold" arms over it -->
+</g>
+<rect width="100%" height="100%" fill="#808080" filter="url(#xx-canvas)" opacity=".016" pointer-events="none"/>
+</svg>
