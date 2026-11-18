@@ -5,7 +5,7 @@ description: Draw original chibi animals as self-contained SVG cards in a soft m
 
 # Mochi chibi
 
-Draw a domed bun head, wide low eyes, a tiny pear torso and soft paws. Use powdery colours, soft upper-left light and a pale card. Choose the species, action, costume and setting from the brief. Keep the animal’s face and body proportions consistent at every level of prop detail.
+Draw a domed bun head, wide low eyes, a tiny pear torso and soft paws. Use powdery colours, soft upper-left light and a background chosen for the scene. Choose the species, action, costume and setting from the brief. Keep the animal’s face and body proportions consistent at every level of prop detail.
 
 ## Default composition: character vignette
 
@@ -124,7 +124,7 @@ Tail roots sit near (26,-16), behind the torso. Mirror the character for the opp
 - Round forms: radial gradient centred at (.42,.32), radius .78; light at 0, base at .5, shade at 1. For fur, lift the base by about 7 HSL lightness points and darken it by 12 for the shade. Use horizontal ramps for cylinders, a light upper face and darker side for slabs. Use fine detail strokes or open frames; separate solid forms by value.
 - Head base: darken the lower half with a vertical gradient ending at #4A3C38, opacity .26. Gloss at (-18,-114), radii (16,5), white gradient .55→0, opacity .5, blur 1.2. Keep the light upper-left when mirroring.
 - Chin shadow: body-clipped ellipse at (0,-55), radii (42,9), opacity .32, blur 2.4. Ground contact: ellipse (0,0), radii (40,5), opacity .22, blur 2.4. Scale material highlights with surface shape; polished trim can catch a thin glint and matte cloth a broad fold shadow.
-- Chroma = highest minus lowest RGB channel (0–255). Background ≤20 with highest channel ≥225; large areas ≤80, accents ≤110, deep darks ≤40 with highest channel ≤70. Include a light ≥240 and a dark ≤50; avoid pure black, neon and chroma >140. Aim for ≥25 difference in highest RGB channel between adjacent animals.
+- Chroma = highest minus lowest RGB channel (0–255). The full-card background may use any hue, value or saturation, solid or gradient. Check that the face reads against it. For foreground art, large areas ≤80, accents ≤110, deep darks ≤40 with highest channel ≤70. Include a light ≥240 and a dark ≤50; avoid pure black, neon and chroma >140. Aim for ≥25 difference in highest RGB channel between adjacent animals.
 - Starter colours: card #EFEBE7, milk #F5F1ED, latte #CDB8A8, charcoal #6F6B6E, eyes #2B2325, blush #EE9FA2, rose #E7A9B4, sage #B7C4B0, gold #C9A86A. See `style.json` for more ramps and anchors.
 
 **Canvas feel.** One barely perceptible monochrome texture spans the entire finished card in canvas coordinates. At 480 px the face reads as smooth vinyl; the surface becomes apparent on zoom. Use gradients for shadow volume. Leave chin, cheeks and muzzle free of stippled shapes. Put the filter in `defs`, then paint the rect once above the finished scene. The shared grain stays continuous across the background, fur, cloth and wood.
@@ -139,7 +139,7 @@ Tail roots sit near (26,-16), behind the torso. Mirror the character for the opp
 
 ## Compose and deliver
 
-Make one self-contained 480×360 SVG (square sticker 360×360), with a title, prefixed IDs and a full-bleed background rect. Target under 80 KB. Use inline presentation attributes; omit linked assets, scripts, logos and visible text. Keep night skies inside windows or panels. Use a soft floor ellipse, ground at y 296–322, scene width about 300–420 and margins ≥24. Keep about 40% calm background. Keep decorative sparkles, dots and hearts in the margins; the example scattering uses 10–18 small marks.
+Make one self-contained 480×360 SVG (square sticker 360×360), with a title, prefixed IDs and a full-bleed background rect. Target under 80 KB. Use inline presentation attributes; omit linked assets, scripts, logos and visible text. A night sky can fill the card. Use a soft floor ellipse, ground at y 296–322, scene width about 300–420 and margins ≥24. Keep about 40% calm background. Keep decorative sparkles, dots and hearts in the margins; the example scattering uses 10–18 small marks.
 
 | Characters | S | Spacing between centres |
 |---|---|---|

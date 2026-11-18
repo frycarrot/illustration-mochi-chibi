@@ -2,7 +2,7 @@
   "skill": "illustration-mochi-chibi",
   "name": "Mochi chibi",
   "blurb": "Bun-headed chibi animals, soft vinyl shading, dusty pastels",
-  "mechanism": "A domed bun head twice the torso width, big wide-set oval eyes low on the face with a tiny nose and mouth right under them, short mitten-shaped paws, no outlines, 3-stop radial shading with bottom occlusion and a top-left gloss, low-chroma colours with deep darks, on a pale near-neutral card.",
+  "mechanism": "A domed bun head twice the torso width, big wide-set oval eyes low on the face with a tiny nose and mouth right under them, short mitten-shaped paws, no outlines, 3-stop radial shading with bottom occlusion and a top-left gloss, low-chroma colours with deep darks, on a scene-chosen background.",
   "canvas": { "viewBox": "0 0 480 360", "square_sticker_viewBox": "0 0 360 360" },
   "frame": {
     "unit": "head width W = 100",
@@ -57,11 +57,11 @@
   },
   "colour_rules": {
     "measure": "chroma = max(R,G,B) - min(R,G,B), 0-255",
-    "background": { "chroma_max": 20, "max_channel_min": 225 },
+    "background": { "choice": "any hue, value or saturation; solid or gradient", "check": "face and silhouette remain readable" },
     "large_areas": { "chroma_max": 80 },
     "accents": { "chroma_max": 110 },
     "deep_darks": { "chroma_max": 40, "max_channel_max": 70 },
-    "never": ["chroma > 140", "#000000", "neon"],
+    "foreground_avoid": ["chroma > 140", "#000000", "neon"],
     "value_range": "at least one area with max channel <= 50 and one >= 240",
     "fur_ramp": "light = base +6-8% L; shade = base -10-14% L, hue 5-10 deg toward red-brown",
     "group_contrast": "neighbouring characters differ by >= 25 in max channel"
@@ -120,10 +120,11 @@
     "Canonical head and body paths; size only through the wrapper scale",
     "Big oval eyes 60 apart, low on the face; tiny nose touching a small mouth",
     "No outlines; radial ramps, bottom occlusion, top-left gloss",
-    "Chroma: background <= 20, large areas <= 80, accents <= 110",
+    "Foreground chroma: large areas <= 80, accents <= 110; background chosen by scene",
     "Any species via ear, tail and marking modules",
     "Any prop via the chibi-fy rules: detail chosen per object, functional joins and material-specific edges"
   ],
+  "gallery": ["laundry-fox.svg", "moonrise-observatory.svg", "little-print-studio.svg"],
   "cards": [
     { "file": "strawberry-tea-time.svg", "title": "Strawberry Tea Time", "subject": "A white floppy-eared puppy with a bow holds a strawberry beside a tiny cake on a pedestal table" },
     { "file": "moon-nap.svg", "title": "Moon Nap", "subject": "A sheep in a nightcap sleeps on a cloud cushion hugging a star pillow, the moon in a round window behind" },

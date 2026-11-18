@@ -32,8 +32,20 @@ const pfx = prefix || (ids[0] && ids[0].match(/^[a-z0-9]+-/i)?.[0]);
 if (pfx) { const bad = ids.filter((i) => !i.startsWith(pfx)); if (bad.length) E(`ids without prefix "${pfx}": ${bad.slice(0, 8).join(', ')}`); }
 for (const m of svg.matchAll(/url\(#([^)]+)\)/g)) if (!ids.includes(m[1])) E(`url(#${m[1]}) points to a missing id`);
 
-// colours
-const colors = [...new Set([...svg.matchAll(/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b(?![0-9a-fA-F])/g)].map((m) => m[0].toUpperCase()))]
+// Exclude the full-card paint from foreground colour checks. Shared colours
+// and shared gradients still get checked where they appear in the artwork.
+let foreground = svg;
+if (first?.[1] === 'rect') {
+  const backgroundTag = first[0];
+  const position = svg.length - afterDefs.length + first.index;
+  foreground = svg.slice(0, position) + svg.slice(position + backgroundTag.length);
+  const backgroundId = backgroundTag.match(/fill="url\(#([^)]+)\)"/)?.[1];
+  if (backgroundId && !foreground.includes(`url(#${backgroundId})`) && !foreground.includes(`href="#${backgroundId}"`)) {
+    foreground = foreground.replace(/<(linearGradient|radialGradient)\b[^>]*>[\s\S]*?<\/\1>/g,
+      (gradient) => gradient.includes(`id="${backgroundId}"`) ? '' : gradient);
+  }
+}
+const colors = [...new Set([...foreground.matchAll(/#[0-9a-fA-F]{6}\b|#[0-9a-fA-F]{3}\b(?![0-9a-fA-F])/g)].map((m) => m[0].toUpperCase()))]
   .filter((c) => !ids.includes(c.slice(1)));
 // chroma = max(R,G,B) - min(R,G,B) on 0-255: the skill's saturation measure
 const chroma = (hex) => {
@@ -47,9 +59,7 @@ for (const c of colors) {
   else if (k > 140) E(`${c} chroma ${k} > 140: too saturated for this style`);
   else if (k > 110) W(`${c} chroma ${k} > 110: allowed only for tiny accents (a cherry, a bow knot)`);
 }
-const bgFill = first?.[0].match(/fill="(#[0-9a-fA-F]{3,6})"/)?.[1];
-if (bgFill && chroma(bgFill) > 20) W(`background ${bgFill} chroma ${chroma(bgFill)} > 20: backgrounds stay near-neutral`);
-if (/fill="(?:red|blue|green|yellow|orange|purple|black)"/i.test(svg)) W('named colour found: use hex from the palette ranges');
+if (/fill="(?:red|blue|green|yellow|orange|purple|black)"/i.test(foreground)) W('named colour found: use hex from the palette ranges');
 
 // outlines: a filled, opaque shape that also carries a stroke
 for (const m of svg.matchAll(/<(path|circle|ellipse|rect|polygon)\b([^>]*)>/g)) {
